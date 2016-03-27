@@ -1,26 +1,21 @@
 ; OS EQUATES
 ; ----------
-;
-; Syntax:
-; Use '=' for addresses
-; and '#' for values
-;
 ; DISPLAY LIST EQUATES
 ;
-ADLI     #   $80
-AVB      #   $40
-ALMS     #   $40
-AVSCR    #   $20
-AHSCR    #   $10
-AJMP     #   $01
-AEMPTY1  #   $00
-AEMPTY2  #   $10
-AEMPTY3  #   $20
-AEMPTY4  #   $30
-AEMPTY5  #   $40
-AEMPTY6  #   $50
-AEMPTY7  #   $60
-AEMPTY8  #   $70
+ADLI     =   $80
+AVB      =   $40
+ALMS     =   $40
+AVSCR    =   $20
+AHSCR    =   $10
+AJMP     =   $01
+AEMPTY1  =   $00
+AEMPTY2  =   $10
+AEMPTY3  =   $20
+AEMPTY4  =   $30
+AEMPTY5  =   $40
+AEMPTY6  =   $50
+AEMPTY7  =   $60
+AEMPTY8  =   $70
 ;
 ; OS VARIABLES FOR 5200
 ;
