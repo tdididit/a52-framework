@@ -1,3 +1,8 @@
+; Atari 5200 Framework
+; Written by Sebastian Kotek (tdididit@gmail.com)
+;
+; Assemble with MADS 2.0.0
+;
   		      icl 'inc/a5200.h'
   		      icl 'inc/5200macro.h'
 	
