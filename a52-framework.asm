@@ -15,6 +15,8 @@
                         
             org $4000
 ROMTOP  equ *	
+  		      icl 'inc/y2k.h'
+
 ;*************** Start of Code *******************
 START:
         sei                     ;Disable interrupts
@@ -62,6 +64,11 @@ crloop3
         lda     #$FC
         sta     VVBLKD+1
          
+        lda $BFFD   ; check did ROM splash sccren was showed
+        cmp #$ff
+        bne MAIN
+        jsr Y2K.SPLASH
+
 ;****** Main Routine after Startup Procedure ******
 
 MAIN:
@@ -75,8 +82,7 @@ MAIN:
 .array signature [23] .byte = $00
 [0] = $02                 ; $02 - PAL compatible / $00 - NTSC only
 [1] = "   A52-FRAMEWORK"  ; Title
-[21] = ":)" 			        ; Year on Atari logo splash screen 
-                          ; $00FF = Don't display Atari logo
- 
+[21] = 16, $ff  	        ; $00FF = Don't display Atari logo
+                          ; $xxFF = Show new splash with 2000+$xx year   
 .enda
-        .word   START     ; Start code at $4000
+        .word   START     ; Start code vector 
