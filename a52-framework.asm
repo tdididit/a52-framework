@@ -9,7 +9,10 @@
 		        opt f+h-
             org $0080
 ;************ Zero Page Variables ****************
-            
+
+            org $0300
+;****************** Variables ********************
+                        
             org $4000
 ROMTOP  equ *	
 ;*************** Start of Code *******************
@@ -46,6 +49,19 @@ crloop3
         cmp     #$40            ;Check if end of RAM
         bne     crloop3         ;Branch if not
 
+        lda     #$03            ;point IRQ vector
+        sta     VIMIRQ          ;to BIOS routine
+        lda     #$FC
+        sta     VIMIRQ+1
+        lda     #$B8            ;point VBI vector
+        sta     VVBLKI          ;to BIOS routine
+        lda     #$FC
+        sta     VVBLKI+1
+        lda     #$B2            ;point Deferred VBI
+        sta     VVBLKD          ;to BIOS routine
+        lda     #$FC
+        sta     VVBLKD+1
+         
 ;****** Main Routine after Startup Procedure ******
 
 MAIN:
