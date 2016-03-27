@@ -71,6 +71,12 @@ MAIN:
 
 ;************** Cart reset vector **************************
 
-        org     $bffd
-        .byte   $FF         ; $FF = Don't display Atari logo
+        org     $bfe7
+.array signature [23] .byte = $00
+[0] = $02                 ; $02 - PAL compatible / $00 - NTSC only
+[1] = "   A52-FRAMEWORK"  ; Title
+[21] = ":)" 			        ; Year on Atari logo splash screen 
+                          ; $00FF = Don't display Atari logo
+ 
+.enda
         .word   START     ; Start code at $4000
